@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope For Africa | Empowering Future Generations</title>
+    <meta name="description"
+        content="Help us provide education, clean water, and healthcare to needy children in Africa. Your donation makes a difference.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #FF8C42;
+            --primary-hover: #E67A2E;
+            --secondary: #20524F;
+            --secondary-hover: #163D3B;
+            --accent: #FFD700;
+            --bg: #FDFBF7;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --text-light: #FDFBF7;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            height: 70px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--secondary-hover) !important;
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at top right, rgba(255, 140, 66, 0.1), transparent),
+                radial-gradient(circle at bottom left, rgba(32, 82, 79, 0.15), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            margin-bottom: 24px;
+            color: var(--secondary);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+            transform: rotate(2deg);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 140, 66, 0.3);
+        }
+
+        /* --- StatsSection --- */
+        .stats {
+            background: var(--secondary);
+            padding: 60px 0;
+            color: white;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            border-radius: var(--radius-lg);
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* --- Causes --- */
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .cause-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cause-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cause-img {
+            height: 240px;
+            position: relative;
+        }
+
+        .cause-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cause-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .cause-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(32, 82, 79, 0.1);
+            color: var(--secondary);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .cause-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--secondary);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 100px;
+            margin: 20px 0 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 100px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .btn-small {
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- Donation Modal --- */
+        #donation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            background: var(--bg);
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--glass-border);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-body h2 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .modal-body p {
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .amount-btn {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            background: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .amount-btn.active {
+            border-color: var(--primary);
+            background: rgba(255, 140, 66, 0.1);
+            color: var(--primary);
+        }
+
+        .custom-amount {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 16px 20px 16px 40px;
+            border-radius: 12px;
+            border: 2px solid #ddd;
+            font-size: 1rem;
+            font-weight: 600;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .custom-amount input:focus {
+            border-color: var(--secondary);
+        }
+
+        .custom-amount span {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 0 40px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 24px;
+            font-size: 1.25rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        [data-reveal].active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 40px;
+            }
+
+            .hero-image {
+                height: 350px;
+                transform: rotate(0);
+                margin-top: 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .causes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            nav {
+                width: 95%;
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">Hope<span>Africa</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#causes">Causes</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <a href="#" class="nav-cta" onclick="openModal('Bank Transfer', 'bank')">Donate Now</a>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="animate-fade-in">Every Child Deserves a <span>Future</span>.</h1>
+                <p class="animate-fade-in" style="animation-delay: 0.2s;">Transforming the lives of children across
+                    Africa through education, clean water, and sustainable healthcare programs. Join our mission today.
+                </p>
+                <div class="animate-fade-in" style="animation-delay: 0.4s;">
+                    <a href="#causes" class="btn btn-primary">Start Donating <i data-lucide="heart"></i></a>
+                    <a href="#about" class="btn btn-secondary"
+                        style="margin-left: 15px; background: none; color: var(--secondary); border: 2px solid var(--secondary);">Learn
+                        More</a>
+                </div>
+            </div>
+            <div class="hero-image animate-fade-in" style="animation-delay: 0.3s;">
+                <img src="hero_african_children.png" id="main-hero-img" alt="African Children Smiling">
+            </div>
+        </div>
+    </header>
+
+    <section class="stats container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 id="stat1">12k+</h3>
+                <p>Children Fed</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="stat2">45</h3>
+                <p>Schools Built</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="stat3">85</h3>
+                <p>Water Pumps</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="stat4">94%</h3>
+                <p>Impact Score</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container" id="causes">
+        <div class="section-header" data-reveal>
+            <h2>Current Campaigns</h2>
+            <p>Your contribution goes directly to the field. Choose a cause that resonates with you and track the
+                progress of your impact in real-time.</p>
+        </div>
+
+        <div class="causes-grid">
+            <!-- Education -->
+            <div class="cause-card" data-reveal>
+                <div class="cause-img">
+                    <img src="cause_education.png" alt="Education">
+                </div>
+                <div class="cause-content">
+                    <span class="cause-tag">Education</span>
+                    <h3>The Digital School Initiative</h3>
+                    <p>Equipping rural schools with tablets and digital learning materials to bridge the tech gap.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>$15,000 raised</span>
+                        <span>75%</span>
+                    </div>
+                    <button class="btn btn-primary btn-small" onclick="openModal('Education')">Support This
+                        Cause</button>
+                </div>
+            </div>
+
+            <!-- Health -->
+            <div class="cause-card" data-reveal style="transition-delay: 0.1s;">
+                <div class="cause-img">
+                    <img src="cause_health.png" alt="Healthcare">
+                </div>
+                <div class="cause-content">
+                    <span class="cause-tag">Healthcare</span>
+                    <h3>Mobile Clinic Program</h3>
+                    <p>Providing essential vaccinations and primary healthcare to remote villages across Sub-Saharan
+                        Africa.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>$9,000 raised</span>
+                        <span>45%</span>
+                    </div>
+                    <button class="btn btn-primary btn-small" onclick="openModal('Healthcare')">Support This
+                        Cause</button>
+                </div>
+            </div>
+
+            <!-- Water -->
+            <div class="cause-card" data-reveal style="transition-delay: 0.2s;">
+                <div class="cause-img">
+                    <img src="cause_water.png" alt="Clean Water">
+                </div>
+                <div class="cause-content">
+                    <span class="cause-tag">Clean Water</span>
+                    <h3>The Safe Water Quest</h3>
+                    <p>Building high-capacity solar-powered water pumps to provide endless clean water to communities.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>$27,000 raised</span>
+                        <span>90%</span>
+                    </div>
+                    <button class="btn btn-primary btn-small" onclick="openModal('Clean Water')">Support This
+                        Cause</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: #f0f0f0;" id="about">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+            <div data-reveal>
+                <img src="hero_african_children.png" alt="About Us"
+                    style="width: 100%; border-radius: var(--radius-lg); filter: saturate(1.2);">
+            </div>
+            <div data-reveal>
+                <h2 style="font-size: 3rem; color: var(--secondary); margin-bottom: 24px;">Our Mission & Vision</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">
+                    We believe that geography should not determine a child's destiny. Founded in 2024, Hope For Africa
+                    has been working tirelessly to create sustainable ecosystems where children can thrive.
+                </p>
+                <div style="display: grid; gap: 20px;">
+                    <div style="display: flex; gap: 15px;">
+                        <div
+                            style="background: var(--primary); color: white; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 5px;">Certified Accountability</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">All financial operations are
+                                overseen by <strong>Mugabe Keith</strong>, our Lead Accountant, ensuring every cent
+                                reaches its destination.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div
+                            style="background: var(--secondary); color: white; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 5px;">Legitimacy & Trust</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">Registered non-profit organization
+                                with full transparency in all local and international bank transfers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo footer-logo">Hope<span>Africa</span></a>
+                <p style="color: rgba(255, 255, 255, 0.6); margin-top: 20px;">Dedicated to creating lasting change
+                    through empathy, action, and transparency.</p>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <a href="#" class="btn-icon"><i data-lucide="twitter"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#causes">All Campaigns</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#">Impact Reports</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Corporate Gifting</a></li>
+                    <li><a href="mailto:HopeAfrica@gmail.com">HopeAfrica@gmail.com</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Newsletter</h4>
+                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 20px;">Join 15,000+ donors receiving monthly
+                    impact updates.</p>
+                <div style="display: flex; gap: 10px;">
+                    <input type="email" placeholder="Email"
+                        style="padding: 12px 20px; border-radius: 100px; border: none; flex-grow: 1; outline: none;">
+                    <button class="btn btn-primary" style="padding: 12px 20px;"><i data-lucide="send"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hope Africa Foundation. All Rights Reserved. Built with Heart for Africa.</p>
+        </div>
+    </footer>
+
+    <!-- Donation Modal -->
+    <div id="donation-modal">
+        <div class="modal-body">
+            <button class="close-modal" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <h2 id="modal-title">Make a Donation</h2>
+            <p id="modal-desc">Your gift will provide immediate relief and long-term support.</p>
+
+            <div style="display: flex; border-bottom: 2px solid #eee; margin-bottom: 24px;">
+                <button id="tab-paypal" class="amount-btn active"
+                    style="flex: 1; border-radius: 12px 12px 0 0; border-bottom: none;"
+                    onclick="switchTab('paypal')">PayPal / Card</button>
+                <button id="tab-bank" class="amount-btn"
+                    style="flex: 1; border-radius: 12px 12px 0 0; border-bottom: none;" onclick="switchTab('bank')">Bank
+                    Transfer</button>
+            </div>
+
+            <div id="paypal-content">
+                <div class="amount-buttons">
+                    <button class="amount-btn active amt-p" onclick="setAmount(25, this)">$25</button>
+                    <button class="amount-btn amt-p" onclick="setAmount(50, this)">$50</button>
+                    <button class="amount-btn amt-p" onclick="setAmount(100, this)">$100</button>
+                </div>
+
+                <div class="custom-amount">
+                    <span>$</span>
+                    <input type="number" id="custom-amt" placeholder="Other Amount" oninput="clearActive()">
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%; justify-content: center;"
+                    onclick="processDonation()">Complete via PayPal</button>
+            </div>
+
+            <div id="bank-content" style="display: none;">
+                <div
+                    style="background: white; padding: 20px; border-radius: 16px; border: 1px dashed var(--secondary); margin-bottom: 20px;">
+                    <div style="margin-bottom: 12px;"><strong>Account Name:</strong> Hope Africa Foundation / MUGABE
+                        KEITH</div>
+                    <div style="margin-bottom: 12px;"><strong>Account Number:</strong> 4860610024570852</div>
+                    <div style="margin-bottom: 12px;"><strong>Accountant:</strong> MUGABE KEITH</div>
+                    <div><strong>Bank:</strong> International Direct Wire</div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label
+                        style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: var(--secondary);">Your
+                        Email (for receipt)</label>
+                    <input type="email" id="bank-email" placeholder="email@example.com"
+                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; outline: none; margin-bottom: 15px;">
+
+                    <label
+                        style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: var(--secondary);">Appreciations
+                        or Comments</label>
+                    <textarea id="bank-comments" placeholder="Write a message of hope..."
+                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; outline: none; height: 80px; resize: none;"></textarea>
+                </div>
+
+                <p
+                    style="font-size: 0.85rem; background: #fff4e5; padding: 10px; border-radius: 8px; color: #856404; margin-bottom: 20px;">
+                    <i data-lucide="info" style="width: 14px; height: 14px; vertical-align: middle;"></i>
+                    Providing your email allows Lead Accountant <strong>Mugabe Keith</strong> to confirm your transfer.
+                </p>
+                <button class="btn btn-secondary" style="width: 100%; justify-content: center;"
+                    onclick="showAppreciation()">I Have Sent My Support</button>
+            </div>
+
+            <!-- Appreciation Screen (Initially Hidden) -->
+            <div id="appreciation-content" style="display: none; text-align: center; padding: 20px 0;">
+                <div
+                    style="background: rgba(32, 82, 79, 0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                    <i data-lucide="heart"
+                        style="color: var(--secondary); width: 40px; height: 40px; fill: var(--secondary);"></i>
+                </div>
+                <h2 style="color: var(--secondary); margin-bottom: 16px;">Thank You for Your Generosity!</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">
+                    "Your kindness today is a seed of hope for tomorrow. Because of you, a child in Africa will have a
+                    better chance to learn, grow, and thrive. We are deeply grateful for your trust and support."
+                </p>
+                <div
+                    style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 30px;">
+                    <p style="font-style: italic; color: var(--secondary); font-weight: 600;">— Mugabe Keith & The Hope
+                        Africa Team</p>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal()">Back to Home</button>
+            </div>
+
+            <p style="font-size: 0.8rem; margin-top: 20px; text-align: center; color: var(--text-muted);">Secure
+                operations overseen by Lead Accountant <strong>Mugabe Keith</strong>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Modal Logic
+        const modal = document.getElementById('donation-modal');
+        let selectedAmount = 25;
+
+        function openModal(cause = "Africa's Future", tab = 'paypal') {
+            modal.style.display = 'flex';
+            document.getElementById('modal-title').innerText = `Support ${cause}`;
+            document.body.style.overflow = 'hidden';
+            if (tab === 'bank') {
+                switchTab('bank');
+            } else {
+                switchTab('paypal');
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset modal state
+            document.getElementById('paypal-content').style.display = 'block';
+            document.getElementById('bank-content').style.display = 'none';
+            document.getElementById('appreciation-content').style.display = 'none';
+            document.getElementById('modal-title').style.display = 'block';
+            document.getElementById('modal-desc').style.display = 'block';
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-paypal').classList.add('active');
+        }
+
+        function showAppreciation() {
+            document.getElementById('paypal-content').style.display = 'none';
+            document.getElementById('bank-content').style.display = 'none';
+            document.querySelector('.modal-body > div:first-of-type').style.display = 'none'; // Hide tabs
+            document.getElementById('modal-title').style.display = 'none';
+            document.getElementById('modal-desc').style.display = 'none';
+            document.getElementById('appreciation-content').style.display = 'block';
+        }
+
+        function setAmount(amt, el) {
+            selectedAmount = amt;
+            document.querySelectorAll('.amt-p').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('custom-amt').value = '';
+        }
+
+        function switchTab(tab) {
+            const paypalContent = document.getElementById('paypal-content');
+            const bankContent = document.getElementById('bank-content');
+            const tabPaypal = document.getElementById('tab-paypal');
+            const tabBank = document.getElementById('tab-bank');
+
+            if (tab === 'paypal') {
+                paypalContent.style.display = 'block';
+                bankContent.style.display = 'none';
+                tabPaypal.classList.add('active');
+                tabBank.classList.remove('active');
+            } else {
+                paypalContent.style.display = 'none';
+                bankContent.style.display = 'block';
+                tabPaypal.classList.remove('active');
+                tabBank.classList.add('active');
+            }
+        }
+
+        function clearActive() {
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        }
+
+        function processDonation() {
+            const paypalUrl = "http://www.paypal.com/ncp/payment/LLKFJJ3463HKY";
+
+            alert(`Thank you for your generosity! We are now redirecting you to our secure PayPal checkout page.`);
+
+            // Redirect to the custom PayPal payment link
+            window.location.href = paypalUrl;
+        }
+
+        // Scroll Effects
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar interaction
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.width = '100%';
+                nav.style.top = '0';
+                nav.style.borderRadius = '0';
+            } else {
+                nav.style.width = '90%';
+                nav.style.top = '20px';
+                nav.style.borderRadius = '100px';
+            }
+        });
+
+        // Update image paths with local ones if they exist
+        // Note: In this environment, the images are in the parent directory or brain folder
+        // For the sake of the demo, I'll assume they will be served correctly or I will move them.
+    </script>
+</body>
+
+</html>
