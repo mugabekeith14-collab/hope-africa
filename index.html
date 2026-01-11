@@ -759,7 +759,7 @@
                 <ul>
                     <li><a href="#">Volunteer</a></li>
                     <li><a href="#">Corporate Gifting</a></li>
-                   <li><a href="mailto:hopeafrica14@gmail.com">HopeAfrica@gmail.com</a></li>
+                    <li><a href="mailto:HopeAfrica@gmail.com">HopeAfrica@gmail.com</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
@@ -788,11 +788,14 @@
 
             <div style="display: flex; border-bottom: 2px solid #eee; margin-bottom: 24px;">
                 <button id="tab-paypal" class="amount-btn active"
-                    style="flex: 1; border-radius: 12px 12px 0 0; border-bottom: none;"
-                    onclick="switchTab('paypal')">PayPal / Card</button>
+                    style="flex: 1; border-radius: 12px 0 0 0; border: none; border-bottom: 2px solid transparent;"
+                    onclick="switchTab('paypal')">PayPal</button>
+                <button id="tab-momo" class="amount-btn"
+                    style="flex: 1; border-radius: 0; border: none; border-bottom: 2px solid transparent;"
+                    onclick="switchTab('momo')">Mobile Money</button>
                 <button id="tab-bank" class="amount-btn"
-                    style="flex: 1; border-radius: 12px 12px 0 0; border-bottom: none;" onclick="switchTab('bank')">Bank
-                    Transfer</button>
+                    style="flex: 1; border-radius: 0 12px 0 0; border: none; border-bottom: 2px solid transparent;"
+                    onclick="switchTab('bank')">Bank Transfer</button>
             </div>
 
             <div id="paypal-content">
@@ -809,6 +812,37 @@
 
                 <button class="btn btn-primary" style="width: 100%; justify-content: center;"
                     onclick="processDonation()">Complete via PayPal</button>
+            </div>
+
+            <div id="momo-content" style="display: none;">
+                <div
+                    style="background: white; padding: 20px; border-radius: 16px; border: 1px dashed var(--primary); margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffcc00;"></div>
+                        <strong>MTN Mobile Money:</strong> +256 775 025 753
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff0000;"></div>
+                        <strong>Airtel Money:</strong> +256 746 821 364
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);"><strong>Name:</strong> MUGABE KEITH</div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label
+                        style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: var(--secondary);">Reference
+                        Name / Phone</label>
+                    <input type="text" id="momo-ref" placeholder="Your name or number"
+                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; outline: none;">
+                </div>
+
+                <p
+                    style="font-size: 0.85rem; background: #e7f3f2; padding: 10px; border-radius: 8px; color: var(--secondary); margin-bottom: 20px;">
+                    <i data-lucide="check-circle" style="width: 14px; height: 14px; vertical-align: middle;"></i>
+                    Direct phone transfers are processed immediately for local impact.
+                </p>
+                <button class="btn btn-primary" style="width: 100%; justify-content: center;"
+                    onclick="showAppreciation()">I Have Sent via Mobile Money</button>
             </div>
 
             <div id="bank-content" style="display: none;">
@@ -903,6 +937,7 @@
 
         function showAppreciation() {
             document.getElementById('paypal-content').style.display = 'none';
+            document.getElementById('momo-content').style.display = 'none';
             document.getElementById('bank-content').style.display = 'none';
             document.querySelector('.modal-body > div:first-of-type').style.display = 'none'; // Hide tabs
             document.getElementById('modal-title').style.display = 'none';
@@ -919,19 +954,32 @@
 
         function switchTab(tab) {
             const paypalContent = document.getElementById('paypal-content');
+            const momoContent = document.getElementById('momo-content');
             const bankContent = document.getElementById('bank-content');
+
             const tabPaypal = document.getElementById('tab-paypal');
+            const tabMomo = document.getElementById('tab-momo');
             const tabBank = document.getElementById('tab-bank');
 
+            // Hide all content
+            paypalContent.style.display = 'none';
+            momoContent.style.display = 'none';
+            bankContent.style.display = 'none';
+
+            // Reset all tabs
+            tabPaypal.classList.remove('active');
+            tabMomo.classList.remove('active');
+            tabBank.classList.remove('active');
+
+            // Show selected
             if (tab === 'paypal') {
                 paypalContent.style.display = 'block';
-                bankContent.style.display = 'none';
                 tabPaypal.classList.add('active');
-                tabBank.classList.remove('active');
+            } else if (tab === 'momo') {
+                momoContent.style.display = 'block';
+                tabMomo.classList.add('active');
             } else {
-                paypalContent.style.display = 'none';
                 bankContent.style.display = 'block';
-                tabPaypal.classList.remove('active');
                 tabBank.classList.add('active');
             }
         }
@@ -985,6 +1033,5 @@
         // For the sake of the demo, I'll assume they will be served correctly or I will move them.
     </script>
 </body>
-
 
 </html>
